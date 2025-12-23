@@ -5,7 +5,7 @@ class SoftmaxCCE:
         pass
 
     def forward(self, input):
-        max = np.max(input, axis=0, keepdims=True)
+        max = np.max(input, axis=1, keepdims=True)
         exp = np.exp(input - max)
 
         return exp / np.sum(exp, axis=1, keepdims=True)

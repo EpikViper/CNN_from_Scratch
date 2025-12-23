@@ -11,15 +11,17 @@ class Conv2D:
         self.channels = input_channels
         self.filters = n_filters
         self.input = None
+        self.dW = np.zeros_like(self.W)
+        self.dB = np.zeros_like(self.B)
 
 
     def forward(self, input):
         self.input = input
         m = self.W.shape[2]
         n = self.W.shape[3]
-        n_batch, c_n, a, b = input.shape
-        W_out =  a - m + 1
-        H_out = b - n + 1
+        n_batch, c_n, h, w = input.shape
+        W_out =  h - m + 1
+        H_out = w - n + 1
 
         output = np.zeros((n_batch, self.filters, W_out, H_out))
 
@@ -60,6 +62,9 @@ class Conv2D:
 
         dW = dW / n_batch
         dB = dB / n_batch
+
+        self.dW = dW 
+        self.dB = dB 
 
         return dX
 
