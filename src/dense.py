@@ -5,15 +5,13 @@ class Dense:
     def __init__(self, n_in, n_out):
         limit = np.sqrt(6 / (n_in + n_out))
         self.input = None 
-        self.output = None 
         self.W = np.random.uniform(-limit, limit, size=(n_in, n_out))
         self.B = np.zeros((1, n_out))
 
     def forward(self, input):
         self.input = input
-        self.output = np.matmul(input, self.W) + self.B 
 
-        return self.output 
+        return np.matmul(input, self.W) + self.B 
 
     
     def backward(self, output_error):
