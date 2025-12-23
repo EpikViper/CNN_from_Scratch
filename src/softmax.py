@@ -8,7 +8,7 @@ class SoftmaxCCE:
         max = np.max(input, axis=0, keepdims=True)
         exp = np.exp(input - max)
 
-        return exp / np.sum(exp, axis=0, keepdims=True)
+        return exp / np.sum(exp, axis=1, keepdims=True)
 
     
     def backward(self, output_error):
