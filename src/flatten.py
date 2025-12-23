@@ -2,16 +2,15 @@ import numpy as np
 
 class Flatten():
     def __init__(self):
-        self.output = None 
         self.shape = None
 
 
     def forward(self, input):
         self.shape = input.shape
-        size = input.size
-        self.output = input.reshape(size, 1)
+        n_batch = input.shape[0]
 
-        return self.output
+        # reshapes to (n_batch, everything else)
+        return input.reshape(n_batch, -1)
 
     def backward(self, output_error):
 
