@@ -2,15 +2,13 @@ import numpy as np
 
 class SoftmaxCCE:
     def __init__(self, n_in):
-        self.output = None
+        pass
 
     def forward(self, input):
         max = np.max(input, axis=0, keepdims=True)
         exp = np.exp(input - max)
 
-        self.output = exp / np.sum(exp, axis=0, keepdims=True)
-
-        return self.output 
+        return exp / np.sum(exp, axis=0, keepdims=True)
 
     
     def backward(self, output_error):
