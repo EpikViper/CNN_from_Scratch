@@ -6,9 +6,8 @@ class MSE:
 
 
     def calculate(self, Y_hat, Y):
-        m = len(Y)
 
-        return np.sum((Y_hat - Y)**2) / (2*m)
+        return np.mean(np.sum((Y_hat - Y)**2)).item() / 2
 
     def derivative(self, Y_hat, Y):
         
@@ -20,11 +19,10 @@ class CCE:
         pass
 
     def calculate(self, Y_hat, Y):
-        m = len(Y)
 
         loss = np.sum(-Y * np.log(Y_hat + 1e-10), axis=1)
 
-        return loss / m 
+        return np.mean(loss).item()
 
 
     # using this in combination with SoftmaxCCE layer, whose derivative is 1 (works in combo)

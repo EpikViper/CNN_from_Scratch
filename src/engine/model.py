@@ -8,7 +8,7 @@ class Model:
         self.loss = loss
         self.layers = []
 
-    def add_layer(self, layer):
+    def add(self, layer):
         self.layers.append(layer)
 
     def forward(self, X):
